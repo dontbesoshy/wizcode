@@ -1,4 +1,4 @@
-php artisan migrate --seed
+php artisan migrate --seed <br>
 php artisan passport:install
 
 Postman:
