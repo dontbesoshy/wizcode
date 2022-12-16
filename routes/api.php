@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\LoginController;
+use App\Http\Controllers\API\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::post('login', [LoginController::class, 'login'])->name('login');
+
+Route::middleware('auth:api')->group(function () {
+    Route::resource('reservation', ReservationController::class)->only(['index', 'store', 'destroy']);
 });
